@@ -28,7 +28,11 @@ export async function loadPdf(bytes, label = 'This PDF') {
 }
 
 async function newDoc() {
-  const out = await PDFDocument.create();
+  // updateMetadata: false stops pdf-lib from stamping its own Producer on save.
+  const out = await PDFDocument.create({ updateMetadata: false });
+  const now = new Date();
+  out.setCreationDate(now);
+  out.setModificationDate(now);
   out.setProducer('Fileward');
   out.setCreator('Fileward (https://lance6x5.github.io/private-file-toolkit/)');
   return out;

@@ -81,7 +81,8 @@ describe('redaction safety (assembly)', () => {
     expect(await leaks(res.bytes, 'Fixture Author')).toBe(false);
     const doc = await PDFDocument.load(res.bytes);
     expect(doc.getPage(1).getSize()).toEqual({ width: 612, height: 792 });
-    expect(doc.getPage(1).node.Resources().lookup(PDFName.of('Font'))).toBeUndefined();
+    const fonts = doc.getPage(1).node.Resources().lookup(PDFName.of('Font'));
+    expect(fonts ? fonts.entries().length : 0).toBe(0);
   });
 });
 
