@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fw:head -->
+  </head>
+  <body data-page="split-pdf">
+    <!-- fw:header -->
+    <main id="main" tabindex="-1">
+      <!-- fw:intro -->
+      <section class="tool card" aria-label="Split PDF tool">
+        <div class="dropzone" id="dz">
+          <input id="file-input" class="visually-hidden" type="file" accept="application/pdf,.pdf" />
+          <label for="file-input" class="dz-label">
+            <svg class="dz-icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false"><path d="M12 15V4m0 0-4 4m4-4 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span class="dz-title">Drop a PDF here, or <span class="dz-link">choose a file</span></span>
+            
+            <span class="dz-limits"></span>
+          </label>
+        </div>
+        <div id="options" hidden>
+          <p id="file-info" class="file-info"></p>
+          <fieldset class="field">
+            <legend>How do you want to split it?</legend>
+            <label class="radio"><input type="radio" name="mode" value="extract" checked /> Extract pages into one new PDF</label>
+            <label class="radio"><input type="radio" name="mode" value="every" /> Split every page into its own PDF</label>
+            <label class="radio"><input type="radio" name="mode" value="chunk" /> Split into files of N pages</label>
+          </fieldset>
+          <div id="extract-fields" class="field">
+            <label for="range">Pages to extract</label>
+            <input id="range" type="text" inputmode="text" autocomplete="off" spellcheck="false" aria-describedby="range-help range-error" />
+            <p id="range-help" class="muted small">For example <code>1-3, 5, 8-</code> (8- means page 8 to the end).</p>
+            <p id="range-error" class="error-text" aria-live="polite"></p>
+          </div>
+          <div id="chunk-fields" class="field" hidden>
+            <label for="chunk">Pages per file</label>
+            <input id="chunk" type="number" min="1" step="1" value="2" inputmode="numeric" />
+          </div>
+        </div>
+        <div class="actions">
+          <button id="run-btn" class="btn btn-primary" type="button" disabled>Split PDF</button>
+          <button id="clear-btn" class="btn btn-ghost" type="button" hidden>Clear</button>
+        </div>
+        <div class="progress" id="progress" hidden>
+          <progress max="1" aria-label="Progress"></progress>
+          <p class="progress-label" role="status" aria-live="polite"></p>
+        </div>
+        <div id="results" class="results" hidden></div>
+      </section>
+      <!-- fw:help -->
+
+    </main>
+    <!-- fw:footer -->
+    <script type="module" src="/src/pages/split.js"></script>
+  </body>
+</html>

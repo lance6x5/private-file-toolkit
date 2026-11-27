@@ -1,0 +1,78 @@
+%PDF-1.7
+%‚„œ”
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [5 0 R 7 0 R 9 0 R] /Count 3 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Length 93 >>
+stream
+BT
+/F1 20 Tf
+72 720 Td
+26 TL
+(Fileward sample page 1) Tj
+T* (Public line: PUBLIC-BRAVO) Tj
+ET
+endstream
+endobj
+5 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 4 0 R >>
+endobj
+6 0 obj
+<< /Length 137 >>
+stream
+BT
+/F1 20 Tf
+72 720 Td
+26 TL
+(Fileward sample page 2) Tj
+T* (CONFIDENTIAL: SECRET-ALPHA-7731) Tj
+T* (Account number 4417-0000-9921) Tj
+ET
+endstream
+endobj
+7 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 6 0 R >>
+endobj
+8 0 obj
+<< /Length 95 >>
+stream
+BT
+/F1 20 Tf
+72 720 Td
+26 TL
+(Fileward sample page 3) Tj
+T* (Closing remarks are public.) Tj
+ET
+endstream
+endobj
+9 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 612 792] /Resources << /Font << /F1 3 0 R >> >> /Contents 8 0 R >>
+endobj
+10 0 obj
+<< /Title (Fileward sample) /Author (Fixture Author) /Producer (Fileward fixture writer) >>
+endobj
+xref
+0 11
+0000000000 65535 f 
+0000000015 00000 n 
+0000000064 00000 n 
+0000000133 00000 n 
+0000000230 00000 n 
+0000000373 00000 n 
+0000000499 00000 n 
+0000000687 00000 n 
+0000000813 00000 n 
+0000000958 00000 n 
+0000001084 00000 n 
+trailer
+<< /Size 11 /Root 1 0 R /Info 10 0 R >>
+startxref
+1192
+%%EOF

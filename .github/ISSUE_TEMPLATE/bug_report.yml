@@ -1,0 +1,47 @@
+name: Bug report
+description: Something in Fileward isn't working as expected.
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for reporting! Please do NOT attach or describe private files. If a specific file triggers the bug, describe its type and size, or share a file you are happy to make public.
+  - type: input
+    id: tool
+    attributes:
+      label: Tool
+      description: Which tool were you using? (e.g. merge-pdf, heic-to-jpg)
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the problem.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Go to ...
+        2. Drop a ... file (type, size, number of pages)
+        3. See ...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+  - type: input
+    id: version
+    attributes:
+      label: App version
+      description: Shown in the app footer, e.g. 1.0.0.
+  - type: input
+    id: environment
+    attributes:
+      label: Browser / OS
+  - type: textarea
+    id: notes
+    attributes:
+      label: Screenshots / notes

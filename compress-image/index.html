@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fw:head -->
+  </head>
+  <body data-page="compress-image">
+    <!-- fw:header -->
+    <main id="main" tabindex="-1">
+      <!-- fw:intro -->
+      <section class="tool card" aria-label="Compress image tool">
+        <div class="dropzone" id="dz">
+          <input id="file-input" class="visually-hidden" type="file" accept="image/jpeg,image/png,image/webp,.jpg,.jpeg,.png,.webp" multiple />
+          <label for="file-input" class="dz-label">
+            <svg class="dz-icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false"><path d="M12 15V4m0 0-4 4m4-4 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span class="dz-title">Drop JPG, PNG or WebP images here, or <span class="dz-link">choose files</span></span>
+            <span class="dz-sub">You can also paste images (Ctrl+V / ⌘V).</span>
+            <span class="dz-limits"></span>
+          </label>
+        </div>
+        <div class="settings">
+          <div class="field">
+            <label for="quality">Quality <output id="quality-out" for="quality">75%</output></label>
+            <input id="quality" type="range" min="10" max="100" step="1" value="75" />
+            
+          </div>
+          <div class="field">
+            <label for="max-dim">Maximum width or height</label>
+            <select id="max-dim">
+              <option value="0">Keep original size</option>
+              <option value="3840">3840 px (4K)</option>
+              <option value="2560">2560 px</option>
+              <option value="1920">1920 px (Full HD)</option>
+              <option value="1280">1280 px</option>
+              <option value="1024">1024 px</option>
+              <option value="800">800 px</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="format">Output format</label>
+            <select id="format">
+              <option value="same">Same as original</option>
+              <option value="jpeg">JPG</option>
+              <option value="webp">WebP</option>
+              <option value="png">PNG (lossless)</option>
+            </select>
+          </div>
+          <label class="check"><input id="keep-smaller" type="checkbox" /> Keep the original when it is already smaller</label>
+        </div>
+        <ul id="queue" class="file-list" hidden aria-label="Images to process"></ul>
+        <div class="actions">
+          <button id="run-btn" class="btn btn-primary" type="button" disabled>Compress</button>
+          <button id="clear-btn" class="btn btn-ghost" type="button" hidden>Clear</button>
+        </div>
+        <div class="progress" id="progress" hidden>
+          <progress max="1" aria-label="Progress"></progress>
+          <p class="progress-label" role="status" aria-live="polite"></p>
+        </div>
+        <div id="results" class="results" hidden></div>
+      </section>
+      <!-- fw:help -->
+
+    </main>
+    <!-- fw:footer -->
+    <script type="module" src="/src/pages/compress.js"></script>
+  </body>
+</html>

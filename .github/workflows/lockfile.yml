@@ -1,0 +1,40 @@
+# TEMPORARY: generates package-lock.json (npm is unavailable on the dev
+# machine), a HEIC test fixture, and the built site for local review.
+name: Generate lockfile
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  lock:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Make a HEIC fixture
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq libheif-examples imagemagick >/dev/null
+          convert -size 96x64 gradient:'#2878c8-#f0b43c' -fill white -draw 'circle 48,32 48,14' /tmp/heic-src.png
+          heif-enc -q 60 -o test-fixtures/sample.heic /tmp/heic-src.png || heif-enc -o test-fixtures/sample.heic /tmp/heic-src.png
+          ls -la test-fixtures
+      - run: npm install --no-audit --no-fund
+      - run: npm test
+      - run: npm run build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lockfile
+          path: |
+            package-lock.json
+            test-fixtures/sample.heic
+      - uses: actions/upload-artifact@v4
+        with:
+          name: dist
+          path: dist

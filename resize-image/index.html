@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fw:head -->
+  </head>
+  <body data-page="resize-image">
+    <!-- fw:header -->
+    <main id="main" tabindex="-1">
+      <!-- fw:intro -->
+      <section class="tool card" aria-label="Resize and convert image tool">
+        <div class="dropzone" id="dz">
+          <input id="file-input" class="visually-hidden" type="file" accept="image/*" multiple />
+          <label for="file-input" class="dz-label">
+            <svg class="dz-icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false"><path d="M12 15V4m0 0-4 4m4-4 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span class="dz-title">Drop images here, or <span class="dz-link">choose files</span></span>
+            <span class="dz-sub">JPG, PNG, WebP or AVIF. You can also paste images (Ctrl+V / ⌘V).</span>
+            <span class="dz-limits"></span>
+          </label>
+        </div>
+        <div class="settings">
+          <div class="field">
+            <label for="format">Convert to</label>
+            <select id="format">
+              <option value="jpeg">JPG</option>
+              <option value="png">PNG</option>
+              <option value="webp">WebP</option>
+              <option value="avif">AVIF</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="quality">Quality <output id="quality-out" for="quality">85%</output></label>
+            <input id="quality" type="range" min="10" max="100" step="1" value="85" />
+            <p id="quality-hint" class="muted small" hidden>PNG is lossless, so quality does not apply.</p>
+          </div>
+          <fieldset class="field">
+            <legend>Size</legend>
+            <label class="radio"><input type="radio" name="mode" value="none" checked /> Keep original size</label>
+            <label class="radio"><input type="radio" name="mode" value="percent" /> Scale by percent</label>
+            <label class="radio"><input type="radio" name="mode" value="pixels" /> Set width / height in pixels</label>
+          </fieldset>
+          <div id="percent-fields" class="field" hidden>
+            <label for="percent">Percent of original size</label>
+            <input id="percent" type="number" min="1" max="1000" step="1" value="50" inputmode="numeric" />
+          </div>
+          <div id="pixel-fields" class="field-row" hidden>
+            <div class="field"><label for="width">Width (px)</label><input id="width" type="number" min="1" max="20000" step="1" inputmode="numeric" /></div>
+            <div class="field"><label for="height">Height (px)</label><input id="height" type="number" min="1" max="20000" step="1" inputmode="numeric" /></div>
+            <label class="check"><input id="lock" type="checkbox" checked /> Keep aspect ratio (fit inside)</label>
+          </div>
+        </div>
+        <ul id="queue" class="file-list" hidden aria-label="Images to process"></ul>
+        <div class="actions">
+          <button id="run-btn" class="btn btn-primary" type="button" disabled>Convert</button>
+          <button id="clear-btn" class="btn btn-ghost" type="button" hidden>Clear</button>
+        </div>
+        <div class="progress" id="progress" hidden>
+          <progress max="1" aria-label="Progress"></progress>
+          <p class="progress-label" role="status" aria-live="polite"></p>
+        </div>
+        <div id="results" class="results" hidden></div>
+      </section>
+      <!-- fw:help -->
+
+    </main>
+    <!-- fw:footer -->
+    <script type="module" src="/src/pages/resize.js"></script>
+  </body>
+</html>

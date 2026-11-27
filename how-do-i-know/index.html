@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fw:head -->
+  </head>
+  <body data-page="how-do-i-know">
+    <!-- fw:header -->
+    <main id="main" tabindex="-1">
+      <!-- fw:intro -->
+      <section class="card prose" aria-labelledby="what-happens">
+        <h2 id="what-happens">What happens to your files</h2>
+        <p>When you choose or drop a file, your browser reads it into this tab’s memory. Fileward’s code, which your browser downloaded when you opened the page, processes it right there, using JavaScript and WebAssembly in background threads (Web Workers). The result is created in memory and saved with an ordinary download link that points to your own device.</p>
+        <p>At no point is a file, a file name or any information about your files sent anywhere. There is no server that could receive them: Fileward is a set of static files hosted on GitHub Pages, with no backend, no accounts, no analytics and no cookies.</p>
+      </section>
+
+      <section class="card prose" aria-labelledby="check-yourself">
+        <h2 id="check-yourself">Check it yourself</h2>
+        <ol>
+          <li><strong>Watch the network.</strong> Open your browser’s developer tools (F12, or ⌥⌘I on a Mac), choose the <em>Network</em> tab, then use any tool. You will see Fileward’s own scripts and styles load from <code>lance6x5.github.io</code>, and nothing being sent when you process a file.</li>
+          <li><strong>Go offline.</strong> Open a tool, then turn off Wi-Fi or switch on airplane mode. Drop a file: the tool still works, because everything it needs is already on your device.</li>
+          <li><strong>Read the code.</strong> Fileward’s source is public on <a href="https://github.com/lance6x5/private-file-toolkit">GitHub</a>. The build is produced by a public GitHub Actions workflow from that source.</li>
+        </ol>
+      </section>
+
+      <section class="card" aria-labelledby="live-check">
+        <h2 id="live-check">Live check for this page</h2>
+        <dl class="stats">
+          <div><dt>Requests made by this page</dt><dd id="net-total">0</dd></div>
+          <div><dt>Requests to other websites</dt><dd id="net-outside">0</dd></div>
+          <div><dt>Blocked by the security policy</dt><dd id="net-blocked">0</dd></div>
+        </dl>
+        <p id="net-verdict" class="verdict" aria-live="polite"></p>
+        <ul id="net-outside-list" class="mono-list" hidden></ul>
+        <p id="online-status"></p>
+        <p id="sw-status" class="muted"></p>
+      </section>
+
+      <section class="card prose" aria-labelledby="csp">
+        <h2 id="csp">The lock on the door: Content-Security-Policy</h2>
+        <p>Every Fileward page carries a Content-Security-Policy, a rule set that your browser enforces. Its <code>connect-src 'self'</code> rule means the page is not allowed to open a connection to any other website, so even a bug could not upload your files. Background workers are started in a way that makes them inherit the same rule. Scripts may only come from Fileward itself; no CDNs or third-party code are loaded. This page’s policy is:</p>
+        <pre id="csp-text" class="csp"></pre>
+      </section>
+
+      <section class="card prose" aria-labelledby="stored">
+        <h2 id="stored">What Fileward stores on your device</h2>
+        <p>Only your last-used settings (such as the compression quality) in this browser’s local storage, and an offline copy of the app in the browser cache. Your files are never stored.</p>
+        <div class="actions">
+          <button id="export-btn" class="btn" type="button">Export settings (JSON)</button>
+          <button id="import-btn" class="btn" type="button">Import settings</button>
+          <input id="import-file" type="file" accept="application/json,.json" hidden />
+          <button id="reset-btn" class="btn btn-danger" type="button">Reset all data</button>
+        </div>
+      </section>
+
+      <dialog id="confirm-dialog" aria-labelledby="confirm-title" aria-describedby="confirm-desc">
+        <form method="dialog">
+          <h2 id="confirm-title">Reset all data?</h2>
+          <p id="confirm-desc">This deletes your saved settings and Fileward’s offline copy from this browser. Your own files are not affected.</p>
+          <div class="actions">
+            <button value="cancel" class="btn" autofocus>Cancel</button>
+            <button value="confirm" class="btn btn-danger">Delete Fileward data</button>
+          </div>
+        </form>
+      </dialog>
+      <!-- fw:help -->
+
+    </main>
+    <!-- fw:footer -->
+    <script type="module" src="/src/pages/privacy.js"></script>
+  </body>
+</html>

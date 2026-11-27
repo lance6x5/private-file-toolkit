@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fw:head -->
+  </head>
+  <body data-page="organize-pdf">
+    <!-- fw:header -->
+    <main id="main" tabindex="-1">
+      <!-- fw:intro -->
+      <section class="tool card" aria-label="Reorder, rotate and delete pages tool">
+        <div class="dropzone" id="dz">
+          <input id="file-input" class="visually-hidden" type="file" accept="application/pdf,.pdf" />
+          <label for="file-input" class="dz-label">
+            <svg class="dz-icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false"><path d="M12 15V4m0 0-4 4m4-4 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span class="dz-title">Drop a PDF here, or <span class="dz-link">choose a file</span></span>
+            
+            <span class="dz-limits"></span>
+          </label>
+        </div>
+        <div id="editor" hidden>
+          <p id="file-info" class="file-info"></p>
+          <p class="muted small">Drag pages to reorder them, or use each page’s arrow buttons. Rotation is lossless.</p>
+          <ol id="page-grid" class="page-grid" aria-label="Pages in their new order"></ol>
+          <div class="actions sticky-actions">
+            <p id="summary" class="muted" aria-live="polite"></p>
+            <button id="run-btn" class="btn btn-primary" type="button">Save PDF</button>
+            <button id="reset-btn" class="btn" type="button">Reset</button>
+          </div>
+        </div>
+        <div class="actions"><button id="clear-btn" class="btn btn-ghost" type="button" hidden>Close file</button></div>
+        <div class="progress" id="progress" hidden>
+          <progress max="1" aria-label="Progress"></progress>
+          <p class="progress-label" role="status" aria-live="polite"></p>
+        </div>
+        <div id="results" class="results" hidden></div>
+      </section>
+      <!-- fw:help -->
+
+    </main>
+    <!-- fw:footer -->
+    <script type="module" src="/src/pages/organize.js"></script>
+  </body>
+</html>

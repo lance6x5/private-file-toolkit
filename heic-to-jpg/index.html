@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- fw:head -->
+  </head>
+  <body data-page="heic-to-jpg">
+    <!-- fw:header -->
+    <main id="main" tabindex="-1">
+      <!-- fw:intro -->
+      <section class="tool card" aria-label="HEIC to JPG converter">
+        <p id="decoder-status" class="muted small" role="status"></p>
+        <div class="dropzone" id="dz">
+          <input id="file-input" class="visually-hidden" type="file" accept=".heic,.heif,image/heic,image/heif" multiple />
+          <label for="file-input" class="dz-label">
+            <svg class="dz-icon" viewBox="0 0 24 24" width="40" height="40" aria-hidden="true" focusable="false"><path d="M12 15V4m0 0-4 4m4-4 4 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M4 15v3a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            <span class="dz-title">Drop HEIC photos here, or <span class="dz-link">choose files</span></span>
+            
+            <span class="dz-limits"></span>
+          </label>
+        </div>
+        <div class="settings">
+          <div class="field">
+            <label for="quality">Quality <output id="quality-out" for="quality">90%</output></label>
+            <input id="quality" type="range" min="10" max="100" step="1" value="90" />
+            
+          </div>
+        </div>
+        <ul id="queue" class="file-list" hidden aria-label="Images to process"></ul>
+        <div class="actions">
+          <button id="run-btn" class="btn btn-primary" type="button" disabled>Convert</button>
+          <button id="clear-btn" class="btn btn-ghost" type="button" hidden>Clear</button>
+        </div>
+        <div class="progress" id="progress" hidden>
+          <progress max="1" aria-label="Progress"></progress>
+          <p class="progress-label" role="status" aria-live="polite"></p>
+        </div>
+        <div id="results" class="results" hidden></div>
+      </section>
+      <!-- fw:help -->
+
+    </main>
+    <!-- fw:footer -->
+    <script type="module" src="/src/pages/heic.js"></script>
+  </body>
+</html>
