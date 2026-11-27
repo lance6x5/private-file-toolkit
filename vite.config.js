@@ -141,7 +141,7 @@ export default defineConfig({
         globPatterns: ['**/*.{html,js,css,svg,png,webmanifest}'],
         // Heavy per-tool libraries are cached on first use instead (below),
         // so visiting Merge PDF never downloads the HEIC decoder.
-        globIgnores: ['og/**', 'assets/vendor-pdfjs*', 'assets/worker-heic*', 'pdfjs/**', '**/*.mjs'],
+        globIgnores: ['og/**', 'assets/vendor-pdfjs*', 'assets/worker-heic*', 'assets/worker-chunk-wasm-bundle*', 'pdfjs/**', '**/*.mjs'],
         maximumFileSizeToCacheInBytes: 12 * 1024 * 1024,
         navigateFallback: null,
         cleanupOutdatedCaches: true,

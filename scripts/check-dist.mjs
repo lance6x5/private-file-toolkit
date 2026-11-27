@@ -64,7 +64,7 @@ for (const f of readdirSync(assets)) {
 
 // Heavy per-tool libraries are runtime-cached, not precached on every visit.
 const sw = readFileSync(join(dist, 'sw.js'), 'utf8');
-for (const heavy of ['worker-heic', 'vendor-pdfjs', 'pdf.worker']) {
+for (const heavy of ['worker-heic', 'wasm-bundle', 'vendor-pdfjs', 'pdf.worker']) {
   if (sw.includes(heavy)) fail(`sw.js precaches ${heavy} (should be cached on first use)`);
 }
 if (!sw.includes('merge-pdf/index.html')) fail('sw.js does not precache the tool pages');
