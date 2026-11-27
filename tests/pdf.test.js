@@ -4,12 +4,15 @@ import { PDFDocument } from 'pdf-lib';
 import { getDocument } from 'pdfjs-dist/legacy/build/pdf.mjs';
 import { pdfInfo, mergePdfs, extractPages, splitGroups, organizePages, loadPdf } from '../src/lib/pdf-ops.js';
 import { zipFiles } from '../src/lib/zip.js';
+import { fileURLToPath } from 'node:url';
 import { SAMPLE_PAGES } from './helpers/pdf-writer.js';
+
+const STD_FONTS = fileURLToPath(new URL('../node_modules/pdfjs-dist/standard_fonts/', import.meta.url));
 
 const sample = () => new Uint8Array(readFileSync(new URL('../test-fixtures/sample.pdf', import.meta.url)));
 
 export async function pageTexts(bytes) {
-  const doc = await getDocument({ data: new Uint8Array(bytes), isEvalSupported: false, useSystemFonts: false }).promise;
+  const doc = await getDocument({ data: new Uint8Array(bytes), isEvalSupported: false, standardFontDataUrl: STD_FONTS }).promise;
   const out = [];
   for (let i = 1; i <= doc.numPages; i++) {
     const tc = await (await doc.getPage(i)).getTextContent();
@@ -37,7 +40,7 @@ describe('PDF tools (pdf-lib)', () => {
       ],
       { onProgress: (p) => progress.push(p) }
     );
-    const doc = await PDFDocument.load(out);
+    const doc = await PDFDocument.load(out, { updateMetadata: false });
     expect(doc.getPageCount()).toBe(4);
     expect(doc.getTitle()).toBeUndefined();
     expect(doc.getAuthor()).toBeUndefined();
