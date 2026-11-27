@@ -28,6 +28,7 @@ describe('reading metadata (exifr)', () => {
     expect(s.rows.map(([k]) => k)).toEqual(expect.arrayContaining(['Location', 'Camera make', 'Camera model', 'Owner / artist']));
     expect(formatCoord(s.gps.latitude, 'lat')).toBe('48.85840° N');
     expect(formatCoord(-73.5, 'lon')).toBe('73.50000° W');
+    expect(s.rows.find(([k]) => k === 'Taken')[1]).toBe('2026-01-02 03:04:05');
   });
 
   it('reports nothing for a JPEG without metadata', async () => {

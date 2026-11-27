@@ -38,17 +38,13 @@ const layoutPlugin = {
 const cspPlugin = {
   name: 'fileward-csp',
   apply: 'build',
+  // Inserted right after <meta charset> (a meta CSP only covers what comes
+  // after it), with literal quotes so the policy is easy to read in the source.
   transformIndexHtml(html) {
-    return {
-      html,
-      tags: [
-        {
-          tag: 'meta',
-          attrs: { 'http-equiv': 'Content-Security-Policy', content: cspFor(pageIdOf(html)) },
-          injectTo: 'head-prepend'
-        }
-      ]
-    };
+    const marker = '<meta charset="UTF-8" />';
+    if (!html.includes(marker)) throw new Error('Page is missing <meta charset="UTF-8" />');
+    const tag = `<meta http-equiv="Content-Security-Policy" content="${cspFor(pageIdOf(html))}" />`;
+    return html.replace(marker, `${marker}\n    ${tag}`);
   }
 };
 

@@ -65,7 +65,12 @@ export function formatCoord(v, axis) {
 
 export function formatValue(v) {
   if (v == null) return '';
-  if (v instanceof Date) return Number.isNaN(v.getTime()) ? '' : v.toISOString().replace('T', ' ').replace(/\.\d+Z$/, ' UTC');
+  if (v instanceof Date) {
+    // EXIF dates have no time zone; exifr reads them as local time, so show local time.
+    if (Number.isNaN(v.getTime())) return '';
+    const p = (n) => String(n).padStart(2, '0');
+    return `${v.getFullYear()}-${p(v.getMonth() + 1)}-${p(v.getDate())} ${p(v.getHours())}:${p(v.getMinutes())}:${p(v.getSeconds())}`;
+  }
   if (ArrayBuffer.isView(v)) return `(${v.byteLength} bytes of binary data)`;
   if (Array.isArray(v)) return v.map(formatValue).join(', ');
   if (typeof v === 'object') {
