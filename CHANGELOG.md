@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-11-27
+
+### Added
+- "Install app" button in the header. It appears only when the browser can install the app and it isn't installed yet (Chrome, Edge, Android), shows "Share > Add to Home Screen" steps on iPhone/iPad, and disappears once installed.
+
 ## [1.0.1] - 2026-11-27
 
 ### Changed
@@ -30,6 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Tests (Vitest) for page ranges, limits, image geometry, settings, feedback URLs, site layout on every page, PDF operations, real redaction (text extraction and full-file scan of redacted output), metadata stripping and HEIC decoding; post-build checks in `scripts/check-dist.mjs`.
 - GitHub Pages deployment via GitHub Actions.
 
-[Unreleased]: https://github.com/lance6x5/private-file-toolkit/compare/v1.0.1...HEAD
+[Unreleased]: https://github.com/lance6x5/private-file-toolkit/compare/v1.1.0...HEAD
+[1.1.0]: https://github.com/lance6x5/private-file-toolkit/compare/v1.0.1...v1.1.0
 [1.0.1]: https://github.com/lance6x5/private-file-toolkit/compare/v1.0.0...v1.0.1
 [1.0.0]: https://github.com/lance6x5/private-file-toolkit/releases/tag/v1.0.0

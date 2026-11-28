@@ -5,6 +5,11 @@
 import '../styles.css';
 import { buildIssueUrl } from './feedback.js';
 
+import { initInstallButton } from './install.js';
+
+// Offer an "Install app" button when the browser allows it and the app isn't installed yet.
+initInstallButton({ appName: 'Fileward', selector: '.site-header' });
+
 export const APP_VERSION = typeof __APP_VERSION__ === 'string' ? __APP_VERSION__ : '';
 export const PAGE_ID = document.body.dataset.page || 'home';
 

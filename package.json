@@ -1,7 +1,7 @@
 {
   "name": "private-file-toolkit",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "description": "Fileward: everyday PDF and image tools that run 100% in your browser. Your files are never uploaded.",
   "author": "Silverlight DevTech",
